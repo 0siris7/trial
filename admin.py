@@ -7,6 +7,7 @@ def adminhome():
 	return render_template('adminhome.html')
 @admin.route('/adminform',methods=['post','get'])
 def adminform():
+	data = {}
 	if 'submit'in request.form:
 		uname=request.form['uname']
 		pwd=request.form['pwd']
@@ -20,4 +21,7 @@ def adminform():
 		id=insert(q)
 		q="insert into user values(null,'%s','%s','%s','%s','%s','%s','%s')"%(id,fname,lastname,dob,gender,phone,email)
 		insert(q)
-	return render_template("adminform.html")
+	q1='select * from user'
+	res=select(q1)
+	data['viewuser']=res
+	return render_template("adminform.html",data=data)

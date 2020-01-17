@@ -1,8 +1,9 @@
 {% include 'adminheader.html'%}
 	<form method="post">
+		<h1 align="center">User Registration</h1>
 		<table align="center">
 			<tr>
-				<th>First Name</th>
+				<th align="center">First Name</th>
 				<td><input type="text" name="fname"></td>
 			</tr>
 			<tr>
@@ -35,9 +36,33 @@
 				<td><input type="password" name="pwd"></td>
 			</tr>
 			<tr>
-				<td><input align="center" type="submit" name="submit" value="submit"></td>
+				<td align="center" colspan="2"><input  type="submit" name="submit" value="submit"></td>
 			</tr>
 			
+		</table>
+		<h1 align="center">Users</h1>
+		<table border="2", align="center">
+			<thead>
+				<tr>
+					<th>User ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{%for row in data['viewuser']%}
+				<tr>
+					<td>{{row['user_id']}}</td>
+					<td>{{row['first_name']}}</td>
+					<td>{{row['last_name']}}</td>
+					<td>{{row['Phone']}}</td>
+					<td>{{row['Email']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 
 	</form>
